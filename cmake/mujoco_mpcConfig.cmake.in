@@ -1,0 +1,30 @@
+@PACKAGE_INIT@
+
+set(mujoco_mpc_VERSION 0.1.0)
+set(mujoco_mpc_FOUND ON)
+
+add_library(libmjpc STATIC IMPORTED)
+set_target_properties(libmjpc PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/libmjpc.a"
+)
+target_include_directories(libmjpc INTERFACE @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@)
+target_link_libraries(libmjpc INTERFACE @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/libmujoco.so)
+target_link_libraries(libmjpc INTERFACE @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/libthreadpool.a)
+
+include("${CMAKE_CURRENT_LIST_DIR}/abslTargets.cmake")
+target_link_libraries(libmjpc INTERFACE absl::algorithm
+                                        absl::base
+                                        absl::debugging
+                                        absl::flat_hash_map
+                                        absl::flags
+                                        absl::memory
+                                        absl::meta
+                                        absl::numeric
+                                        absl::random_random
+                                        absl::strings
+                                        absl::synchronization
+                                        absl::time
+                                        absl::utility
+                                        absl::log_internal_message
+                                        absl::log_internal_check_op)
