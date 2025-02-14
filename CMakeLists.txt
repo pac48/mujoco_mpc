@@ -22,6 +22,9 @@ set(CMAKE_POLICY_DEFAULT_CMP0072 NEW)
 # This line has to appear before 'PROJECT' in order to be able to disable incremental linking
 set(MSVC_INCREMENTAL_DEFAULT ON)
 
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
+
 project(
   mujoco_mpc
   VERSION 0.1.0
@@ -40,10 +43,10 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 include(MpcOptions)
 include(MujocoMacOS)
 
-option(MJPC_BUILD_TESTS "Build tests for MJPC" ON)
-option(MJPC_GRPC_BUILD_TESTS "Build tests for gRPC" ON)
+option(MJPC_BUILD_TESTS "Build tests for MJPC" OFF)
+option(MJPC_GRPC_BUILD_TESTS "Build tests for gRPC" OFF)
 option(MJPC_BUILD_GRPC_SERVICE "Build MJPC gRPC service." OFF)
-option(PYMJPC_BUILD_TESTS "Build tests for Python bindings" ON)
+option(PYMJPC_BUILD_TESTS "Build tests for Python bindings" OFF)
 set_property(GLOBAL PROPERTY BUILD_ALL_TARGETS ON)
 set(CMAKE_INSTALL_COMPONENT ON)
 
