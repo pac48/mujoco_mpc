@@ -252,14 +252,6 @@ foreach (HEADER_FILE IN ITEMS ${HEADER_FILES})
   install(FILES ${HEADER_FILE} DESTINATION include/${REL_PATH})
 endforeach ()
 
-file(GLOB_RECURSE HEADER_FILES "${mujoco_SOURCE_DIR}/include/*.h")
-foreach (HEADER_FILE IN ITEMS ${HEADER_FILES})
-  get_filename_component(ABSOLUTE_PATH ${HEADER_FILE} DIRECTORY)
-  file(RELATIVE_PATH REL_PATH ${mujoco_SOURCE_DIR} ${ABSOLUTE_PATH})
-  install(FILES ${HEADER_FILE} DESTINATION ${REL_PATH})
-endforeach ()
-
-
 file(GLOB_RECURSE HEADER_FILES "${absl_SOURCE_DIR}/absl/*.h" "${absl_SOURCE_DIR}/absl/*.inc" )
 foreach (HEADER_FILE IN ITEMS ${HEADER_FILES})
   get_filename_component(ABSOLUTE_PATH ${HEADER_FILE} DIRECTORY)
