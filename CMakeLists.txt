@@ -22,10 +22,6 @@ set(CMAKE_POLICY_DEFAULT_CMP0072 NEW)
 # This line has to appear before 'PROJECT' in order to be able to disable incremental linking
 set(MSVC_INCREMENTAL_DEFAULT ON)
 
-set(CMAKE_C_COMPILER clang)
-set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_CXX_COMPILER_AR llvm-ar)
-
 project(
   mujoco_mpc
   VERSION 0.1.0
