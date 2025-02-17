@@ -144,8 +144,9 @@ add_library(
   simulate.h
   task.cc
   task.h
-  $<TARGET_OBJECTS:mujoco::platform_ui_adapter>
 )
+target_link_libraries(libmjpc mujoco::platform_ui_adapter)
+
 set_target_properties(libmjpc PROPERTIES OUTPUT_NAME mjpc)
 target_compile_options(libmjpc PUBLIC ${MJPC_COMPILE_OPTIONS})
 target_compile_definitions(libmjpc PRIVATE MJSIMULATE_STATIC)
@@ -226,7 +227,10 @@ target_compile_options(testspeed PUBLIC ${MJPC_COMPILE_OPTIONS})
 target_link_options(testspeed PRIVATE ${MJPC_LINK_OPTIONS})
 target_compile_definitions(testspeed PRIVATE MJSIMULATE_STATIC)
 
-add_subdirectory(tasks)
+if(MJPC_BUILD_TASKS)
+  add_subdirectory(tasks)
+endif()
+
 
 if(BUILD_TESTING AND MJPC_BUILD_TESTS)
   enable_testing()

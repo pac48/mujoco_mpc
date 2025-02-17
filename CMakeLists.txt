@@ -45,6 +45,7 @@ include(MpcOptions)
 include(MujocoMacOS)
 
 option(MJPC_BUILD_TESTS "Build tests for MJPC" OFF)
+option(MJPC_BUILD_TASKS "Build tasks for MJPC" OFF)
 option(MJPC_GRPC_BUILD_TESTS "Build tests for gRPC" OFF)
 option(MJPC_BUILD_GRPC_SERVICE "Build MJPC gRPC service." OFF)
 option(PYMJPC_BUILD_TESTS "Build tests for Python bindings" OFF)
@@ -78,7 +79,7 @@ set(MUJOCO_MPC_DM_CONTROL_GIT_TAG
 
 findorfetch(
   USE_SYSTEM_PACKAGE
-  OFF
+  ON
   PACKAGE_NAME
   mujoco
   LIBRARY_NAME
@@ -109,7 +110,7 @@ set(BUILD_SHARED_LIBS
 
 findorfetch(
   USE_SYSTEM_PACKAGE
-  OFF
+  ON
   PACKAGE_NAME
   GTest
   LIBRARY_NAME
